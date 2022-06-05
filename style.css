@@ -9,20 +9,22 @@
   --squareMarginTopBig: calc(var(--squareSize) * 0.736923);
   --squareMarginLeftBig: calc(var(--squareSize) * 0.115091);
 
+  --lowRectangleWidht: calc(var(--squareSize) * 1.021277);
+  --lowRectangleHeight: calc(var(--squareSize) * 0.155574);
+  --lowRectangleMarginLeftBig: calc(var(--squareSize) * 0.135);
+
+  --circleWidth: calc(var(--lowRectangleWidht) * 0.872);
+  --circleHeight: calc(var(--lowRectangleWidht) * 0.81);
+  --circleMarginSmall: calc(var(--lowRectangleWidht) * 0.239583);
 
 
 
 
+  --highRectangleWidth: calc(var(--squareSize) * 1.595);
+  --highRectangleHeight: calc(var(--squareSize) * 3.518387);
+  --highRectangleMarginLeft: calc(var(--highRectangleWidth) * 0.318);
+  --highRectangleMarginTop: calc(var(--highRectangleWidth) * 0.035);
 
-  --lowRactangleWidht: calc(var(--squareSize) * 1.021277);
-  --lowRactangleHeight: calc(var(--squareSize) * 0.155574);
-
-  --lowRactangleMarginLeftBig: calc(var(--squareSize) * 0.135);
-
-  --circleWidth: calc(var(--lowRactangleWidht) * 0.872);
-  --circleHeight: calc(var(--lowRactangleWidht) * 0.81);
-  
-  --circleMarginSmall: calc(var(--lowRactangleWidht) * 0.239583);
 }
 
 * {
@@ -87,11 +89,7 @@
   transform: translate(calc(var(--squareSize) * 0.001), calc(var(--squareSize) * 0.04));
 }
 
-
-
-
-
-
+/* Second block of elements */
 .figures-wrapper--second {
   position: relative;
   top: 0;
@@ -107,15 +105,15 @@
 }
 
 .low-rectangle {
-  width: var(--lowRactangleWidht);
-  height: var(--lowRactangleHeight);
-  margin-left: var(--lowRactangleMarginLeftBig);
+  width: var(--lowRectangleWidht);
+  height: var(--lowRectangleHeight);
+  margin-left: var(--lowRectangleMarginLeftBig);
   border: 3px solid black;
   background-color: rgb(0, 0, 255);
 }
 
 .low-rectangle--bottom {
-  margin-top: calc(var(--lowRactangleHeight) * 1.8);
+  margin-top: calc(var(--lowRectangleHeight) * 1.8);
   transform: translateX(-1px);
 }
 
@@ -126,4 +124,30 @@
   border: 3px solid black;
   border-radius: 50%;
   background-color: rgb(0, 128, 128);
+}
+
+
+
+
+/* Third block of elements */
+.figures-wrapper--third {
+  display: flex;
+  height: calc(var(--sectionHeightSmall) * 3);
+}
+
+.high-rectangle {
+  width: var(--highRectangleWidth);
+  height: var(--highRectangleHeight);
+  border: 3px solid black;
+  background-color: rgb(0, 0, 255);
+  margin: var(--highRectangleMarginTop) 0 0 var(--highRectangleMarginLeft);
+}
+
+.high-rectangle::after {
+  content: "ABC";
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  font-family: 'Prompt', sans-serif;
+  font-size: 2rem;
 }
