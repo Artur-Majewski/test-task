@@ -1,0 +1,39 @@
+:root {
+  --wrapperHeight: 75vh;
+  --smartphoneHeader: 0.068202;
+  --smartphoneMainHeight: 0.855298;
+  --smartphoneWidth: 0.351428;
+  --sectionHeightSmall: calc(var(--wrapperHeight) * var(--smartphoneMainHeight) / 6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.block-wrapper {
+  width: 100%;
+  max-width: calc(var(--wrapperHeight) * var(--smartphoneWidth));
+}
+
+.block-wrapper__header {
+  height: calc(var(--wrapperHeight) * var(--smartphoneHeader));
+  border: 3px solid black;
+  background-color: rgb(128, 128, 0);
+}
+
+.block-wrapper__main {
+  height: calc(var(--sectionHeightSmall) * 6);
+  border: 3px solid black;
+  border-top: none;
+  background-color: rgb(0, 128, 0);
+}
