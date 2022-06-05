@@ -1,9 +1,13 @@
 :root {
   --wrapperHeight: 75vh;
-  --smartphoneHeader: 0.068202;
+  --smartphoneHeader: 0.06749;
   --smartphoneMainHeight: 0.855298;
   --smartphoneWidth: 0.351428;
   --sectionHeightSmall: calc(var(--wrapperHeight) * var(--smartphoneMainHeight) / 6);
+
+  --squareSize: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.325859);
+  --squareMarginTopBig: calc(var(--squareSize) * 0.736923);
+  --squareMarginLeftBig: calc(var(--squareSize) * 0.115091);
 }
 
 * {
@@ -36,4 +40,34 @@
   border: 3px solid black;
   border-top: none;
   background-color: rgb(0, 128, 0);
+}
+
+/* First block of elements */
+.figures-wrapper--first {
+  height: calc(var(--sectionHeightSmall) * 2);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.square-wrapper {
+  width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.774605);
+  height: var(--squareSize);
+  display: flex;
+  transform: translate(var(--squareMarginLeftBig), var(--squareMarginTopBig)) rotate(-44deg);
+}
+
+.square-wrapper__rotated-square {
+  border: 3px solid black;
+  width: var(--squareSize);
+  height: var(--squareSize);
+  background-color: rgb(255, 0, 0);
+}
+
+.square-wrapper__rotated-square--left {
+  margin-right: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.122887);
+}
+
+.square-wrapper__rotated-square--right {
+  transform: translate(calc(var(--squareSize) * 0.001), calc(var(--squareSize) * 0.04));
 }
