@@ -1,10 +1,11 @@
 :root {
   --wrapperHeight: 75vh;
   --smartphoneHeader: 0.06749;
-  --smartphoneMainHeightSmall: 0.852298;
-  --smartphoneMainHeight: 0.945298;
+  --smartphoneMainHeightSmall: 0.840;
+  --smartphoneMainHeight: 0.93298;
   --smartphoneWidth: 0.349428;
-  --tabletWidth: 1.846154;
+  --tabletWidth: 1.816154;
+  --desktopWidth: 2.798538;
 
   --sectionHeightSmall: calc(var(--wrapperHeight) * var(--smartphoneMainHeightSmall) / 6);
   --sectionHeight: calc(var(--wrapperHeight) * var(--smartphoneMainHeight) / 6);
@@ -12,6 +13,8 @@
   --squareSize: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.325859);
   --squareMarginTopBig: calc(var(--squareSize) * 0.736923);
   --squareMarginTopMedium: calc(var(--squareSize) * 0.668);
+  --squareMarginTopSmall: calc(var(--squareSize) * 0.65);
+
   --squareMarginLeftBig: calc(var(--squareSize) * 0.115091);
   --squareMarginLeftSmall: calc(var(--squareSize) * 0.072154);
 
@@ -23,13 +26,12 @@
   --circleWidth: calc(var(--lowRectangleWidht) * 0.872);
   --circleHeight: calc(var(--lowRectangleWidht) * 0.81);
   --circleMarginSmall: calc(var(--lowRectangleWidht) * 0.239583);
-  --circleMarginBig: calc(var(--lowRectangleWidht) * 0.368421);
+  --circleMarginBig: calc(var(--lowRectangleWidht) * 0.341421);
 
   --highRectangleWidth: calc(var(--squareSize) * 1.595);
-  --highRectangleHeight: calc(var(--squareSize) * 3.518387);
+  --highRectangleHeight: calc(var(--squareSize) * 3.48);
   --highRectangleMarginLeft: calc(var(--highRectangleWidth) * 0.318);
   --highRectangleMarginTop: calc(var(--highRectangleWidth) * 0.035);
-
 }
 
 * {
@@ -134,12 +136,10 @@
 
 /* Third block of elements */
 .figures-wrapper--third {
-  display: flex;
   height: calc(var(--sectionHeightSmall) * 3);
 }
 
 .high-rectangle {
-  position: relative;
   width: var(--highRectangleWidth);
   height: var(--highRectangleHeight);
   border: 3px solid black;
@@ -197,7 +197,7 @@
     position: absolute;
     top: auto;
     left: auto;
-    right: calc(var(--highRectangleWidth) * 0.142);
+    right: calc(var(--highRectangleWidth) * 0.13);
     bottom: calc(var(--highRectangleWidth) * 0.128);
   }
 
@@ -206,7 +206,64 @@
   }
 
   .high-rectangle::after {
-    margin-top: 0.75rem;
+    margin-top: 0.9rem;
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .block-wrapper {
+    width: 100%;
+    max-width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * var(--desktopWidth));
+  }
+
+  .block-wrapper__header {
+    border: 5px solid black;
+  }
+
+  .block-wrapper__main {
+    height: calc(var(--sectionHeight) * 3);
+  }
+
+  .figures-wrapper {
+    width: calc(100% / 3);
+  }
+
+  .square-wrapper {
+    transform: translate(var(--squareMarginLeftSmall), var(--squareMarginTopSmall)) rotate(-43deg);
+  }
+
+  .figures-wrapper--second {
+    height: calc(var(--sectionHeight) * 2);
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    left: calc(100% / 3 + 7px);
+  }
+
+  .figures-wrapper--internal {
+    margin-bottom: 38%;
+  }
+
+  .figures-wrapper--third {
+    justify-content: flex-end;
+    align-items: center;
+    height: calc(var(--sectionHeight) * 3);
+    position: absolute;
+  
+    top: auto;
+    left: auto;
+    right: calc(var(--highRectangleWidth) * 0.101);
+    bottom: 0;
+  }
+
+  .high-rectangle {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .high-rectangle::after {
+    margin-top: 0.9rem;
     font-size: 2rem;
   }
 }
