@@ -8,6 +8,21 @@
   --squareSize: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.325859);
   --squareMarginTopBig: calc(var(--squareSize) * 0.736923);
   --squareMarginLeftBig: calc(var(--squareSize) * 0.115091);
+
+
+
+
+
+
+  --lowRactangleWidht: calc(var(--squareSize) * 1.021277);
+  --lowRactangleHeight: calc(var(--squareSize) * 0.155574);
+
+  --lowRactangleMarginLeftBig: calc(var(--squareSize) * 0.135);
+
+  --circleWidth: calc(var(--lowRactangleWidht) * 0.872);
+  --circleHeight: calc(var(--lowRactangleWidht) * 0.81);
+  
+  --circleMarginSmall: calc(var(--lowRactangleWidht) * 0.239583);
 }
 
 * {
@@ -44,23 +59,23 @@
 
 /* First block of elements */
 .figures-wrapper--first {
-  height: calc(var(--sectionHeightSmall) * 2);
   position: relative;
   top: 0;
   left: 0;
+  height: calc(var(--sectionHeightSmall) * 2);
 }
 
 .square-wrapper {
+  display: flex;
   width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.774605);
   height: var(--squareSize);
-  display: flex;
   transform: translate(var(--squareMarginLeftBig), var(--squareMarginTopBig)) rotate(-44deg);
 }
 
 .square-wrapper__rotated-square {
-  border: 3px solid black;
   width: var(--squareSize);
   height: var(--squareSize);
+  border: 3px solid black;
   background-color: rgb(255, 0, 0);
 }
 
@@ -70,4 +85,45 @@
 
 .square-wrapper__rotated-square--right {
   transform: translate(calc(var(--squareSize) * 0.001), calc(var(--squareSize) * 0.04));
+}
+
+
+
+
+
+
+.figures-wrapper--second {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  height: calc(var(--sectionHeightSmall) * 1);
+}
+
+.figures-wrapper--internal {
+  display: flex;
+  align-items: center;
+}
+
+.low-rectangle {
+  width: var(--lowRactangleWidht);
+  height: var(--lowRactangleHeight);
+  margin-left: var(--lowRactangleMarginLeftBig);
+  border: 3px solid black;
+  background-color: rgb(0, 0, 255);
+}
+
+.low-rectangle--bottom {
+  margin-top: calc(var(--lowRactangleHeight) * 1.8);
+  transform: translateX(-1px);
+}
+
+.circle {
+  width: var(--circleWidth);
+  height: var(--circleHeight);
+  margin-left: var(--circleMarginSmall);
+  border: 3px solid black;
+  border-radius: 50%;
+  background-color: rgb(0, 128, 128);
 }
