@@ -11,7 +11,7 @@
   --sectionHeight: calc(var(--wrapperHeight) * var(--smartphoneMainHeight) / 6);
 
   --squareSize: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.325859);
-  --squareMarginTopBig: calc(var(--squareSize) * 0.736923);
+  --squareMarginTopBig: calc(var(--squareSize) * 0.726923);
   --squareMarginTopMedium: calc(var(--squareSize) * 0.668);
   --squareMarginTopSmall: calc(var(--squareSize) * 0.65);
 
@@ -21,17 +21,19 @@
   --lowRectangleWidht: calc(var(--squareSize) * 1.021277);
   --lowRectangleHeight: calc(var(--squareSize) * 0.155574);
   --lowRectangleMarginLeftBig: calc(var(--squareSize) * 0.135);
-    --lowRectangleMarginLeftSmall: calc(var(--squareSize) * 0.109719);
+  --lowRectangleMarginLeftSmall: calc(var(--squareSize) * 0.109719);
 
   --circleWidth: calc(var(--lowRectangleWidht) * 0.872);
-  --circleHeight: calc(var(--lowRectangleWidht) * 0.81);
+  --circleHeight: calc(var(--lowRectangleWidht) * 0.77);
   --circleMarginSmall: calc(var(--lowRectangleWidht) * 0.239583);
   --circleMarginBig: calc(var(--lowRectangleWidht) * 0.341421);
 
   --highRectangleWidth: calc(var(--squareSize) * 1.595);
   --highRectangleHeight: calc(var(--squareSize) * 3.48);
   --highRectangleMarginLeft: calc(var(--highRectangleWidth) * 0.318);
-  --highRectangleMarginTop: calc(var(--highRectangleWidth) * 0.035);
+  --highRectangleMarginTop: calc(var(--highRectangleWidth) * 0.039);
+
+  --animation-time: 1s
 }
 
 * {
@@ -51,6 +53,7 @@
 .block-wrapper {
   width: 100%;
   max-width: calc(var(--wrapperHeight) * var(--smartphoneWidth));
+  transition: max-width var(--animation-time);
 }
 
 .block-wrapper__header {
@@ -65,20 +68,18 @@
   border: 3px solid black;
   border-top: none;
   background-color: rgb(0, 128, 0);
+  transition: height var(--animation-time);
+  overflow-y: hidden;
 }
 
 /* First block of elements */
 .figures-wrapper--first {
-  position: relative;
-  top: 0;
-  left: 0;
   height: calc(var(--sectionHeightSmall) * 2);
 }
 
 .square-wrapper {
   display: flex;
   width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * 0.774605);
-  height: var(--squareSize);
   transform: translate(var(--squareMarginLeftBig), var(--squareMarginTopBig)) rotate(-44deg);
 }
 
@@ -99,12 +100,14 @@
 
 /* Second block of elements */
 .figures-wrapper--second {
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: calc(var(--sectionHeightSmall) * 2);
   left: 0;
   display: flex;
   align-items: flex-end;
-  height: calc(var(--sectionHeightSmall) * 1);
+  height: calc(var(--sectionHeightSmall));
+  padding-bottom: 4px;
+  transition: all var(--animation-time);
 }
 
 .figures-wrapper--internal {
@@ -132,33 +135,38 @@
   border: 3px solid black;
   border-radius: 50%;
   background-color: rgb(0, 128, 128);
+  transition: margin-left var(--animation-time);
 }
 
 /* Third block of elements */
 .figures-wrapper--third {
+  position: absolute;
+  top: calc(var(--sectionHeightSmall) * 3);
+  display: flex;
   height: calc(var(--sectionHeightSmall) * 3);
+  transition: all var(--animation-time);
 }
 
 .high-rectangle {
   width: var(--highRectangleWidth);
   height: var(--highRectangleHeight);
+  margin: var(--highRectangleMarginTop) 0 0 var(--highRectangleMarginLeft);
   border: 3px solid black;
   background-color: rgb(0, 0, 255);
-  margin: var(--highRectangleMarginTop) 0 0 var(--highRectangleMarginLeft);
+  transition: background-color var(--animation-time);
 }
 
 .high-rectangle::after {
   content: "ABC";
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: calc(var(--highRectangleHeight) * 0.09);
   font-family: 'Prompt', sans-serif;
-  font-size: 2rem;
+  font-size: calc(var(--highRectangleHeight) * 0.115);
 }
 
 @media (min-width: 583px) and (max-width: 900px) {
   .block-wrapper {
-    width: 100%;
     max-width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * var(--tabletWidth));
   }
 
@@ -175,7 +183,7 @@
   }
 
   .square-wrapper {
-    transform: translate(var(--squareMarginLeftSmall), var(--squareMarginTopMedium)) rotate(-43deg) ;
+    transform: translate(var(--squareMarginLeftSmall), var(--squareMarginTopMedium)) rotate(-43deg);
   }
 
   .figures-wrapper--internal {
@@ -191,29 +199,25 @@
   }
 
   .figures-wrapper--third {
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: calc(var(--sectionHeight) * 3);
-    position: absolute;
     top: auto;
-    left: auto;
     right: calc(var(--highRectangleWidth) * 0.13);
     bottom: calc(var(--highRectangleWidth) * 0.128);
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .high-rectangle {
+    margin: 0;
     background-color: rgb(200, 55, 55);
   }
 
   .high-rectangle::after {
-    margin-top: 0.9rem;
-    font-size: 2rem;
+    margin-top: calc(var(--highRectangleHeight) * 0.055);
   }
 }
 
 @media (min-width: 901px) {
   .block-wrapper {
-    width: 100%;
     max-width: calc(var(--wrapperHeight) * var(--smartphoneWidth) * var(--desktopWidth));
   }
 
@@ -234,11 +238,12 @@
   }
 
   .figures-wrapper--second {
-    height: calc(var(--sectionHeight) * 2);
-    justify-content: flex-end;
     position: absolute;
+    justify-content: flex-end;
+    height: calc(var(--sectionHeight) * 2);
     top: 0;
     left: calc(100% / 3 + 7px);
+    padding: 0;
   }
 
   .figures-wrapper--internal {
@@ -246,15 +251,14 @@
   }
 
   .figures-wrapper--third {
-    justify-content: flex-end;
-    align-items: center;
-    height: calc(var(--sectionHeight) * 3);
     position: absolute;
-  
     top: auto;
     left: auto;
     right: calc(var(--highRectangleWidth) * 0.101);
     bottom: 0;
+    justify-content: flex-end;
+    align-items: center;
+    height: calc(var(--sectionHeight) * 3);
   }
 
   .high-rectangle {
@@ -263,7 +267,6 @@
   }
 
   .high-rectangle::after {
-    margin-top: 0.9rem;
-    font-size: 2rem;
+    margin-top: calc(var(--highRectangleHeight) * 0.055);
   }
 }
